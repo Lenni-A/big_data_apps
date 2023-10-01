@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request
 
 app = Flask(__name__)
@@ -15,3 +16,7 @@ def main():
 def echo_input():
     input_text = request.form.get("user_input", "")
     return "You entered: " + input_text
+
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 33507))
+    app.run(host="0.0.0.0", port)
